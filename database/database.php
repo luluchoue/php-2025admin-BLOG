@@ -1,9 +1,10 @@
 <?php
+
 // 5-Connexion à la base de données avec PDO
-$servername = "127.0.0.1";
-$username = "root"; // Utilisez 'root' si c'est votre utilisateur MySQL
-$password = ""; // Utilisez le mot de passe correct
-$database = "stage_blogphp_2025";
+$servername = '127.0.0.1';
+$username = 'root'; // Utilisez 'root' si c'est votre utilisateur MySQL
+$password = ''; // Utilisez le mot de passe correct
+$database = 'stage_blogphp_2025';
 
 try {
     // Établir la connexion à la base de données
@@ -16,7 +17,5 @@ try {
     echo "<div style='background-color:#e6aaec;text-align:center; color:#8d079c;'>Connexion à la base de données réussie</div>";
 } catch (PDOException $e) {
     // Gérer les erreurs de connexion
-    echo "<div style='color:red;'>La connexion à la base de données a échoué :</div> " . $e->getMessage();
+    echo "<div style='color:red;'>La connexion à la base de données a échoué :</div> ".$e->getMessage();
 }
-
-
