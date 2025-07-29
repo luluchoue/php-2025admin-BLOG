@@ -9,7 +9,7 @@
 
         /* Pied de page */
         footer {
-            background-color: var(--secondary-color);
+            background-color: red;
             color: white;
             padding: 30px 0;
             text-align: center;

@@ -1,8 +1,15 @@
 
 
 <?php
-
+session_start();
 require_once 'database/database.php';
+
+
+$sql="SELECT * FROM articles ORDER BY created_at DESC";
+$articles = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 $pageTitle = "page d'accueil du blog";
 
 // debut de tampon de la page de sortie

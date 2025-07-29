@@ -3,6 +3,11 @@
 session_start();
 require_once 'database/database.php';
 
+if ($_SESSION['role']!=='admin'){
+    header('location:index.php');
+    exit();
+}
+
 $pageTitle = 'Page  d\'accueil';
 
 // Début du tampon de la page de sortie
