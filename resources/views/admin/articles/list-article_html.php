@@ -38,27 +38,25 @@ button:hover {
 }
 
 </style>
-
 <h1>Nos articles</h1>
-<p>Il y a <?= count($articles)?>articles</p>
-
+<p>Il y a <?= count($articles); ?> articles</p>
 
 <!-- Affichage des erreurs et succès -->
-<?php if (!empty($errors)): ?>
+<?php if (! empty($errors)) { ?>
     <div class="alert alert-danger">
-        <?php foreach ($errors as $error): ?>
+        <?php foreach ($errors as $error) { ?>
             <p><?= $error ?></p>
-        <?php endforeach; ?>
+        <?php } ?>
     </div>
-<?php endif; ?>
+<?php } ?>
 
-<?php if (isset($success['update'])): ?>
+<?php if (isset($success['update'])) { ?>
     <div class="alert alert-success">
         <p><?= $success['update'] ?></p>
     </div>
-<?php endif; ?>
+<?php } ?>
 <form method="POST" action="">
-    <input type="text" name="search" placeholder="Rechercher un article..." value="##">
+    <input type="text" name="search" placeholder="Rechercher un article..." value="<?= htmlspecialchars($searchTerm) ?>">
     <button type="submit">Rechercher</button>
    
      <a class="button" href="/list-article.php">Réinitialiser</a>
@@ -77,31 +75,28 @@ button:hover {
         </tr>
     </thead>
     <tbody>
-        <?php foreach($articles as $article): ?>
-       
+        <?php foreach ($articles as $article) { ?>
             <tr>
                 <td>
-                  <img src=" <?=$article['image']?>" alt=" <?=$article['title']?> ">
+                    <?php if (! empty($article['image'])) { ?>
+                        <img src="<?= $article['image'] ?>" alt="<?= htmlspecialchars($article['title']) ?>">
+                    <?php } ?>
                 </td>
-                <td><?=$article['title']?></td>
-                <td><?=$article['introduction']?></td>
-                <td><?=$article['created_at']?></td>
-                
-                
-                
+                <td><?= htmlspecialchars($article['title']) ?></td>
+                <td><?= htmlspecialchars($article['introduction']) ?></td>
+                <td><?= htmlspecialchars($article['created_at']) ?></td>
                 <td style="display: flex; justify-content: center; align-items: center;">
-                    <a href="#">
+                    <a href="article.php?id=<?= urlencode($article['id']); ?>">
                         <i class='bx bx-show'></i>Show
                     </a>
-                    <a href="#">
+                    <a href="update-article.php?id=<?= urlencode($article['id']); ?>">
                         <i class='bx bx-edit'></i>Edit
                     </a>
-                    <a href="#" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?!')">
+                    <a href="delete-article.php?id=<?= urlencode($article['id']); ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?!')">
                         <i class='bx bx-trash'></i>Del
                     </a>
                 </td>
             </tr>
-            <?php endforeach;?>
-        
+        <?php } ?>
     </tbody>
 </table>

@@ -47,7 +47,7 @@
                         <span class="article-comments">
                             <i class='bx bx-comment-dots'></i> 5 commentaires
                         </span>
-                        <a href="#" class="read-more">
+                        <a href="article.php?id=<?=$article['id']?>" class="read-more">
                             Lire<i class='bx bx-chevron-right'></i>
                         </a>
                     </div>
